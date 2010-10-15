@@ -88,6 +88,18 @@ this.searchForm = new Ext.FormPanel({
 
 
 
+this.actionAdd = new Ext.Action({
+	text: 'New',
+	iconCls: 'icoAdd',
+});
+this.actionEdit = new Ext.Action({
+	text: 'Edit',
+	iconCls: 'icoEdit',
+});
+this.actionDelete = new Ext.Action({
+	text: 'Delete',
+	iconCls: 'icoDelete',
+});
 
 this.statusBar = new Ext.ux.StatusBar({text: 'No debtores in this view'});
 
@@ -95,10 +107,12 @@ this.statusBar = new Ext.ux.StatusBar({text: 'No debtores in this view'});
 //************************************************************************************
 this.grid = new Ext.grid.GridPanel({
 	title: 'Debtors',
+	hideTitle: true,
 	renderTo: 'debtors_widget',
 	iconCls: 'icoAgsGroups',
 	border: false,
 	height: window.innerHeight - 140,
+	tbar: [this.actionAdd, this.actionEdit, this.actionDelete],
 	colModel: new Ext.grid.ColumnModel({
 		defaults: {
 			CCCwidth: 120,

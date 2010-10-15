@@ -3,18 +3,9 @@
 from tipfy import RequestHandler, Response, render_json_response
 from tipfy.ext.jinja2 import render_response
 
-#from google.appengine.ext import blobstore
-#from google.appengine.ext import webapp
-#from google.appengine.ext.webapp import blobstore_handlers
-#from tipfy.ext.blobstore import  BlobstoreUploadMixin, BlobstoreDownloadMixin
-
-from apps.models import AgsFile
-from apps import queries
 
 from apps.app_global import AppGlobal
 appGlobal = AppGlobal()
-
-
 
 
 ##########################################################################
@@ -25,17 +16,11 @@ class IndexHandler(RequestHandler):
 		return render_response('index.html', c=context, g=appGlobal)
 
 
-
-
-
-
 ##########################################################################
 class DebtorsHandler(RequestHandler):
 	def get(self):
 		context = {'title': 'Debtors', 'tab': '/debtors'}
 		return render_response('debtors.html', c=context, g=appGlobal)
-
-
 
 
 ##########################################################################
