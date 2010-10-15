@@ -1,0 +1,104 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1;">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<title>{{ c.title }} - {{ g.ini.site.title }}</title>
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+<link href="{{ g.ini.cdn.daffo }}/style_sheets/reset.css" type="text/css" rel="stylesheet">
+
+
+{#********************************************************}
+{*** Javascript and jQuery Libs ***}
+{********************************************************#}
+<script type="text/javascript">
+
+
+var USER_DATE_FORMAT = 'd-m-Y';
+var USER_TIME_FORMAT = 'H:i';
+var USER_DATE_TIME_FORMAT = 'd-m-y H:i';
+var USER_NICE_DATE_FORMAT = 'l, jS  F Y';
+var USER_LOG_DATE_FORMAT = 'D d-m-Y H:i';
+
+var MYSQL_DATE_FORMAT = 'Y-m-d';
+var MYSQL_TIME_FORMAT = 'H:i:s';
+var MYSQL_DATE_TIME_FORMAT = 'Y-m-d H:i:s';
+
+{% if user %}
+var AUTH = true;
+var ACCOUNT_ID = {user.account_id};
+var USER_ID = {user.contact_id};
+
+{% else %}
+var AUTH = false;
+{% endif %}
+
+</script>
+
+
+
+{##############################################}
+{### icons  ###}
+<link href="/cssgen/icons" type="text/css" rel="stylesheet">
+
+
+{##############################################}
+{### extjs  ###}
+
+<link rel="stylesheet" type="text/css" href="{{ g.ini.cdn.daffo }}/js/{{ g.ini.js.ext_version }}/resources/css/ext-all.css">
+{# <link rel="stylesheet" type="text/css" href="{{ g.ini.cdn.daffo }}/js/{{ g.ini.js.ext_version }}/resources/css/xtheme-blue.css"> #}
+<link rel="stylesheet" type="text/css" href="{{ g.ini.cdn.daffo }}/js/ext-plugins/plugins.css">
+
+
+<script type="text/javascript" src="{{ g.ini.cdn.daffo }}/js/{{ g.ini.js.ext_version }}/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="{{ g.ini.cdn.daffo }}/js/{{ g.ini.js.ext_version }}/ext-all-debug.js"></script>
+<script type="text/javascript" src="{{ g.ini.cdn.daffo }}/js/ext-plugins/StaticTextField.js"></script>
+<script type="text/javascript" src="{{ g.ini.cdn.daffo }}/js/ext-plugins/RowExpander.js"></script>
+
+<script type="text/javascript" src="{{ g.ini.cdn.daffo }}/js/ext-3.2.1/ux/statusbar/StatusBar.js"></script>
+
+<link rel="stylesheet" href="/css/nemo.1.css" />
+
+</head>
+
+<body>
+
+<div id="page_container">
+
+	<div id="page_header">
+		<img src="/images/nemo-logo.1.gif">
+		<h1><a href="/">Pay Up!!</a></h1>	
+	</div>
+
+	<div id="top_nav">
+	
+		<ul class="navlist">
+			{% for n in g.nav() %}
+			<li><a href="{{ n.url }}" {% if n.url == c.tab %}class="selected"{% endif %}><b>{{ n.label }}</b></a></li>
+			{% endfor %}
+		</ul>
+
+	</div>
+	<div id="page_content">
+	{% block content %}
+
+	== CONTENT ==
+
+	{% endblock %}
+	</div>
+
+	<div id="page_footer">
+	<p>
+		<a href="http://appengine.google.com">Control Panel</a> - 
+		<a href="/ags/memcache/flush_all">Flush Memcache</a>
+	</p>
+	</div>
+
+</div>
+
+
+</body>
+</html>

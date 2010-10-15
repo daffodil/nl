@@ -1,0 +1,17 @@
+{% extends "container.html" %}
+
+{% block content %}
+
+
+<div id="content">
+
+<ul>
+	<li>This site uses <a href="openid">OpenID</a> single signon authentication.</li>
+	<li>If you havent got an account with any of the providers, then we recommend you visit <a href="https://www.myopenid.com/">myopenid.com</a> and <a href="https://www.myopenid.com/signup">create an account.</a>
+	</li>
+</ul>
+
+<iframe src="http://ags2go.rpxnow.com/openid/embed?token_url=http%3A%2F%2Fags2go.appspot.com%2Fauth%2Frpxnow" scrolling="no" frameBorder="no" allowtransparency="true" style="width:400px;height:240px"></iframe>
+</div>
+
+{% endblock content %}
