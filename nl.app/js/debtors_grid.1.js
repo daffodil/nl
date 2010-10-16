@@ -86,15 +86,31 @@ this.searchForm = new Ext.FormPanel({
 		
 });
 
+//***************************************************
+//** Edit Dialog
+this.edit_dialog = function(id){
+	var d = new DebtorsDialog(id);
+	d.win.on("DO_REFRESH", function(){
+		self.store.reload();
+	});
+		
+}
 
-
+//***************************************************
+//** Actions
 this.actionAdd = new Ext.Action({
 	text: 'New',
 	iconCls: 'icoAdd',
+	handler: function(){
+		self.edit_dialog(0);
+	}
 });
 this.actionEdit = new Ext.Action({
 	text: 'Edit',
 	iconCls: 'icoEdit',
+	handler: function(){
+		
+	}
 });
 this.actionDelete = new Ext.Action({
 	text: 'Delete',
@@ -105,6 +121,7 @@ this.statusBar = new Ext.ux.StatusBar({text: 'No debtores in this view'});
 
 
 //************************************************************************************
+//*** Grid
 this.grid = new Ext.grid.GridPanel({
 	title: 'Debtors',
 	hideTitle: true,
@@ -120,8 +137,9 @@ this.grid = new Ext.grid.GridPanel({
 			
 		},
 		columns:[
-					{dataIndex: 'name', header: 'Group', width: 50},
-					{dataIndex: 'description', header: 'Description'}
+					{dataIndex: 'contact', header: 'Contact'},
+					{dataIndex: 'company', header: 'Company'},
+					{dataIndex: 'amount', header: 'Amount'},
 					//{dataIndex: 'class', header: 'Class'},
 		]
 	}),
